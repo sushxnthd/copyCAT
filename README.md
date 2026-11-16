@@ -1,60 +1,132 @@
 # CopyCAT
 
-**Copy-Controlled Attainability Testing** for fixed evaluation archives.
+**Copy-Controlled Attainability Testing**  
+Companion reproducibility repository for **“CopyCAT: Exact Winner Certificates When One Fact Counts Twice.”**
 
-This repository is the judge-facing reproducibility package for **“CopyCAT: Exact Winner Certificates When One Fact Counts Twice”**, prepared for the Apart AI × Epistemics Research Sprint (16 November 2026).
+CopyCAT asks a narrow decision question: with every released prediction and label frozen, if selected existing evaluation roots may be counted twice under **one common schedule across systems**, which leaderboard outcomes are attainable, how many copies are required, and which winners are impossible?
 
-## What CopyCAT audits
+## 60-second judge check
 
-CopyCAT freezes released predictions and labels, declares stable evaluation roots, and asks what happens if up to a bounded number of existing roots receive one extra copy under **one common copied-root schedule across all systems**.
-
-For the pinned 588-question English MMLU-ProX-Lite archive used in the paper:
-
-- three shared copies make the runner-up uniquely first;
-- eight shared copies make the third configuration uniquely first;
-- seven configurations are exactly excluded from ever becoming unique winners under the allowed intervention;
-- at a 10% budget, 24/45 pooled strict orders can reverse, 1 can tie only, and 20 remain strictly ordered.
-
-These are finite released-configuration sensitivity results under a declared synthetic copy intervention. They are not population capability rankings and do not estimate how often natural semantic duplication occurs.
-
-## Quick demo
-
-Python 3.12+ is recommended. The headline demo uses only the Python standard library and the supplied derived binary matrix:
+No API key, model inference, GPU, network access, or package installation is required:
 
 ```bash
 python code/quick_demo.py
+python code/verify_repo_claims.py
 ```
 
-It recomputes the three-copy and eight-copy winners, checks every rival, proves the minimum copy counts, and emits all seven integer exclusions.
+The demo independently recomputes the headline from a compact lossless encoding of the delivered 588×10 binary score matrix:
 
-## Full reproduction
+- baseline winner: **Gemini-3.8-Flash, 532/588**
+- **GPT-6.1-Sol** becomes uniquely first after **3 shared copies**; 3 is necessary and sufficient
+- **Claude-Sonnet-5.5** becomes uniquely first after **8 shared copies**; 8 is necessary and sufficient
+- the remaining **7 configurations are exactly excluded** from becoming unique winners under the one-extra-copy-per-root contract
+- possible unique winners: **{Gemini, GPT, Claude}**
 
-Install the pinned numerical dependencies:
+The witness root indices and blocking-rival exclusion certificates are in [`results/mmlu/headline_certificate.json`](results/mmlu/headline_certificate.json).
+
+## Independent verification
+
+With NumPy/SciPy installed:
+
+```bash
+python code/test_mmlu_exact.py
+python code/test_joint_winners.py
+```
+
+The recovered submission artifact was rerun before this repository was populated:
+
+- MMLU exact enumeration: **PASS — 1,092 signed vectors / 7,107 subset-budget cases**
+- joint-winner verification: **PASS — 680 brute-force cases**
+- manuscript quantitative audit: **PASS — 51 checks**
+- headline demo: **PASS**
+
+See [`verification/JUDGE_CHECKS.json`](verification/JUDGE_CHECKS.json).
+
+## What CopyCAT certifies
+
+For the declared threat family:
+
+1. predictions and labels are fixed;
+2. roots are existing aligned evaluation units;
+3. each root may receive at most one extra copy;
+4. the same copied-root schedule is applied to every system;
+5. pairwise extrema are attained exactly;
+6. minimum-copy counterexamples are reported;
+7. joint unique-winner feasibility uses one common schedule;
+8. impossible winners receive exact certificates.
+
+The broad phenomenon that multiplicity/reweighting can change rankings is prior work. CopyCAT does **not** claim a first-ever sensitivity framework. The closest-work boundary is documented in [`docs/CLOSE_PRIOR_ART_AUDIT.md`](docs/CLOSE_PRIOR_ART_AUDIT.md), and the shared-schedule computational distinction is documented in [`docs/JOINT_WINNER_PROOF.md`](docs/JOINT_WINNER_PROOF.md).
+
+## Headline empirical results
+
+### MMLU-ProX-Lite
+
+Pinned English archive: **588 aligned questions × 10 released configurations**.
+
+At the 10% budget, `B=58`:
+
+- **24 / 45** pooled strict orders can reverse
+- **1 / 45** is tie-only
+- **20 / 45** remain strictly robust
+
+Compact result files:
+
+- [`results/mmlu/headline_matrix.json`](results/mmlu/headline_matrix.json) — lossless bit-packed score matrix
+- [`results/mmlu/headline_certificate.json`](results/mmlu/headline_certificate.json) — minimum witnesses and exact exclusions
+- [`results/mmlu/pooled_summary.json`](results/mmlu/pooled_summary.json) — pooled decision classes
+
+### Secondary analyses
+
+[`results/secondary_summary.json`](results/secondary_summary.json) records the compact secondary checks:
+
+- MedQA: 18 Brier comparisons; 4 reversible within `B=127`, 14 robust; minimum reversal budgets 71, 77, 100, 105
+- mass-preserving repair: 132 Brier / fixed-bin ECE / weighted-AUROC checks restored within `1e-12`
+- FActScore: selected 79-prompt Alpaca-7B/Vicuna-13B existence witness reverses under both released verifiers
+- natural-count transport: aggregate shift but no matched-topic model-order reversal
+
+These are deliberately scoped results, not evidence that natural semantic duplication is common.
+
+## Reproduce the pinned MMLU audit from the public source
+
+Install:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-Acquire the public source bytes and rerun the full analysis into a fresh directory:
+Acquire and audit the exact pinned English source release:
 
 ```bash
-python code/run_submission.py --data-root ./data --out-dir ./fresh_reproduction --download
+python code/mmlu_release.py \
+  --data-root ./data/mmlu_prox \
+  --out-dir ./fresh_mmlu \
+  --download
+
+python code/joint_winners.py \
+  ./fresh_mmlu/aligned_binary_matrix.json \
+  --out ./fresh_mmlu/joint_winners.json
 ```
 
-The runner fails closed on changed source bytes, failed scripts, unmatched reference results, or unverified solver statuses. No model inference, GPU, paid API, or API key is required.
+`mmlu_release.py` verifies the pinned dataset revision, all 140 English result files, source sizes/hashes, binary labels, duplicate keys, and cross-system question identity before producing the aligned matrix.
+
+For the imported FActScore, MedQA, and FaStFact public releases, exact sources, revisions, hashes, and licensing boundaries are in [`DATA.md`](DATA.md). `code/acquire_sources.py` downloads and hash-verifies those inputs.
 
 ## Repository map
 
-- `code/` — CopyCAT audit, exact tests, joint-winner solver checks, secondary analyses, and reproduction runners.
-- `results/mmlu/` — aligned binary matrix, exact pairwise results, witnesses, joint-winner certificates, and source manifest.
-- `results/` — MedQA, factuality, natural-count, and mass-preserving-repair outputs used in the report.
-- `DATA.md` — exact public sources, pinned revisions/blob IDs, hashes, and local layout.
-- `CODE_PROVENANCE.md` — pre-sprint, imported campaign, and final-revision code boundary.
-- `submission/JOINT_WINNER_PROOF.md` — solver-independent integer argument for the headline possible-winner set.
-- `submission/DEMO_SCRIPT.md` — short judge demonstration outline.
+```text
+code/           certificate algorithms, analyses, tests, and acquisition tools
+results/        compact judge-facing result/certificate files
+verification/   fresh PASS record from the recovered submitted artifact
+docs/           prior-art audit and joint-winner proof note
+examples/       minimal generic CopyCAT audit input
+DATA.md         public inputs, pinned revisions, hashes, and redistribution boundaries
+CODE_PROVENANCE.md  pre-sprint vs imported vs final-revision provenance
+```
 
-## Scientific boundary
+## Provenance and scope
 
-Ordinary reweighting sensitivity, mass conservation, weighted metrics, and election-control ideas are established prior work. CopyCAT’s contribution is the bounded shared-copy audit, its joint-winner attainability/exclusion certificates, and the finite empirical audit under that contract. Pairwise reversibility is not treated as proof that a target can beat every rival under one schedule.
+[`CODE_PROVENANCE.md`](CODE_PROVENANCE.md) distinguishes pre-sprint GRIT ideas, imported earlier campaign modules, and code written in the final sprint revision.
 
-The current manuscript source is maintained in the project Google Doc; the code and derived evidence in this repository are the reproducibility surface for submission.
+This repository establishes **finite released-configuration results under a declared synthetic copy intervention**. It does not establish natural attack prevalence, semantic-root discovery, population-level model superiority, unseen factuality confirmation, or security under arbitrary deletions/repetitions/weight changes.
+
+No result here was newly invented for GitHub; this repository exposes and rechecks the code and evidence underlying the submitted project.

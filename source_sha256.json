@@ -1,0 +1,21 @@
+{
+  "factscore/factscore-unlabeled-predictions/ChatGPT.jsonl": "9bdfa178d066677f3e5e3bcad59ecc12f458c5a36c37ffbc265ce06a96a536a5",
+  "factscore/factscore-unlabeled-predictions/InstructGPT.jsonl": "c34fc53db6c7e78dc91eb60d6b33ccdfb87d76b657c8b1a62dd696da7c4cdba1",
+  "factscore/factscore-unlabeled-predictions/alpaca-13B.jsonl": "1202cd08670de6ecbc42a3746c087a32818046eebaccd8a854e5216707d16bb6",
+  "factscore/factscore-unlabeled-predictions/alpaca-7B.jsonl": "ecb9458bb4680d05ecf6042304522da8b69531b626b611275d23fcb52d345ff4",
+  "factscore/factscore-unlabeled-predictions/alpaca.jsonl": "4383756b131c2df0c309a4402dd68fc71b5781b5183df5cac586cfd3b464196f",
+  "factscore/factscore-unlabeled-predictions/dolly-12b.jsonl": "408064538dfc40cc2eb25abb4298bfd2ddec8f4b6e5fd7e04ac78f615814c96a",
+  "factscore/factscore-unlabeled-predictions/gpt4.jsonl": "0f05f2acb261c4120ff3ff25c13bde354426c824dd83ee246af79b37a2eeff49",
+  "factscore/factscore-unlabeled-predictions/mpt-7b.jsonl": "65c272736e50a29f816ed89c89e254d5b696bbf1b4a9a886adf01a6b12399d53",
+  "factscore/factscore-unlabeled-predictions/pythia-12b.jsonl": "38463c029039dbbdd3f12b4a5ee1625c13fa5b4f86cfd14a594e868a4a5ab37c",
+  "factscore/factscore-unlabeled-predictions/stablelm-alpha-7b.jsonl": "b0b9cf770f1278c6106cf5fbec6ed492dc707b82df4b2c9ddba36ff6d3329050",
+  "factscore/factscore-unlabeled-predictions/vicuna-13b.jsonl": "52fa51da06ee711074dcdde94f57faca245daa7252a051f564f5d3a4eb149828",
+  "factscore/factscore-unlabeled-predictions/vicuna-7b.jsonl": "4f36db02ff7788561dfef094bdff57139d16c24f20a0f0df4a4a3c23ffcac78a",
+  "factscore_human/data/labeled/ChatGPT.jsonl": "b58fe7113acc28dee8d3e6ee7e426bfdedaa293bba270f0977f568b9319e92d4",
+  "factscore_human/data/labeled/InstructGPT.jsonl": "4ec1fa538a9f99606130c76db63d4af7f203ca460954a3edd7c4d0e385cd2d58",
+  "factscore_human/data/labeled/PerplexityAI.jsonl": "81ada151f2de8b7c205e3c15491e54b92d89bfb37b05366dca8b7a0486f109ff",
+  "fastfact.jsonl": "2a8b4215da0254dfabffadf5de06144d2a0c1f62dc7d8a4b3f87e2d43ab03512",
+  "llama.csv": "7f7bd1bdba50f8be693edf5b3a1be1f2db32614ecd6b5f95568b85455ff0d608",
+  "mistral.csv": "8992c6ac1097eaa229002e5abbe1cbd585a288bccb1f71a66f08a6be3dbaa36f",
+  "qwen.csv": "5374d5e1a2b9091f10ad6102b5dfac5d62f4ddd417df8a6c8c3976173d3631e4"
+}

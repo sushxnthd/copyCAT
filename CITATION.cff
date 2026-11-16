@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "CopyCAT: Exact Winner Certificates When One Fact Counts Twice"
+message: "If you use this research artifact, please cite the accompanying manuscript."
+type: software
+authors:
+  - family-names: Dasari
+    given-names: Sushanth
+date-released: 2026-11-16
+repository-code: "https://github.com/sushxnthd/copyCAT"

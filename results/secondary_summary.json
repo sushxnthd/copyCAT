@@ -1,0 +1,53 @@
+{
+  "medqa": {
+    "comparisons": 18,
+    "B": 127,
+    "reversible": 4,
+    "robust": 14,
+    "minimum_reversal_budgets": [
+      71,
+      77,
+      100,
+      105
+    ]
+  },
+  "mass_preserving_repair": {
+    "checks": 132,
+    "max_abs_error": 5.551115123125783e-16,
+    "tolerance": 1e-12
+  },
+  "factscore": {
+    "selected_pair": "alpaca-7B vs vicuna-13b",
+    "n": 79,
+    "two_verifiers_reverse": true,
+    "verifier_rows": [
+      {
+        "A": "alpaca-7B",
+        "B": "vicuna-13b",
+        "n": 79,
+        "verifier": "ChatGPT_Labels",
+        "baseline_margin": 0.00753966591582117,
+        "refined_margin": -0.0015889400568450118,
+        "strict_reversal": true
+      },
+      {
+        "A": "alpaca-7B",
+        "B": "vicuna-13b",
+        "n": 79,
+        "verifier": "LLAMA+NP_Labels",
+        "baseline_margin": 0.0014732959774765297,
+        "refined_margin": -0.0033931949091928204,
+        "strict_reversal": true
+      }
+    ]
+  },
+  "natural_counts": {
+    "responses": 493,
+    "estimate": 0.01032170444816582,
+    "ci95": [
+      0.0078049123556715415,
+      0.012843153089442136
+    ],
+    "matched_order_reversals": 0
+  }
+}

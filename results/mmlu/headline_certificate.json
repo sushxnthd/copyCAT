@@ -1,0 +1,86 @@
+{
+  "n": 588,
+  "B": 58,
+  "baseline_winner": "gemini-3.8-flash",
+  "baseline": [
+    {
+      "model": "gemini-3.8-flash",
+      "correct": 532,
+      "accuracy": 0.9047619047619048
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "correct": 530,
+      "accuracy": 0.9013605442176871
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "correct": 525,
+      "accuracy": 0.8928571428571429
+    },
+    {
+      "model": "deepseek-v4.1-flash-flex",
+      "correct": 511,
+      "accuracy": 0.8690476190476191
+    },
+    {
+      "model": "glm-5.3-flash-flex",
+      "correct": 508,
+      "accuracy": 0.8639455782312925
+    },
+    {
+      "model": "gemma-4-31b",
+      "correct": 507,
+      "accuracy": 0.8622448979591837
+    },
+    {
+      "model": "glm-5.3",
+      "correct": 506,
+      "accuracy": 0.8605442176870748
+    },
+    {
+      "model": "qwen-3.8-27b",
+      "correct": 502,
+      "accuracy": 0.8537414965986394
+    },
+    {
+      "model": "gpt-6-luna",
+      "correct": 500,
+      "accuracy": 0.8503401360544217
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "correct": 493,
+      "accuracy": 0.8384353741496599
+    }
+  ],
+  "attainable": [
+    {
+      "model": "claude-sonnet-5-5",
+      "minimum_copies": 8,
+      "selected_root_indices": [322,380,190,424,393,245,15,564],
+      "after_correct_counts": [497,533,514,532,513,509,514,504,531,506]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "minimum_copies": 0,
+      "selected_root_indices": [],
+      "after_correct_counts": [493,525,511,532,507,506,508,500,530,502]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "minimum_copies": 3,
+      "selected_root_indices": [277,507,424],
+      "after_correct_counts": [493,528,513,532,509,507,510,502,533,503]
+    }
+  ],
+  "exclusions": [
+    {"model":"claude-haiku-5-5","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-35,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"deepseek-v4.1-flash-flex","blocking_rival":"gemini-3.8-flash","maximum_possible_corect_count_advantage":-11,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"gemma-4-31b","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-11,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"glm-5.3","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-17,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"glm-5.3-flash-flex","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-12,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"gpt-6-luna","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-21,"impossible_unique_winner_for_any_one_copy_budget":true},
+    {"model":"qwen-3.8-27b","blocking_rival":"gemini-3.8-flash","maximum_possible_correct_count_advantage":-17,"impossible_unique_winner_for_any_one_copy_budget":true}
+  ]
+}
