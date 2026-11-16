@@ -103,7 +103,9 @@ No model inference is required to reproduce the reported analyses from the relea
 
 ## Paper material
 
-- Supplement: [CopyCAT Additional Material.pdf](paper/CopyCAT%20Additional%20Material.pdf)
+- Main manuscript: [CopyCAT Research Manuscript Final.pdf](paper/CopyCAT%20Research%20Manuscript%20Final.pdf)
+- Reading deck: [CopyCAT Reading Deck.pdf](paper/CopyCAT%20Reading%20Deck.pdf)
+- Technical supplement: [CopyCAT Additional Material.pdf](paper/CopyCAT%20Additional%20Material.pdf)
 - Supplement source: [CopyCAT_Additional_Material.tex](paper/CopyCAT_Additional_Material.tex)
 
 ## Scope
