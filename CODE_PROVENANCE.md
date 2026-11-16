@@ -1,34 +1,37 @@
 # Code provenance
 
-This record distinguishes pre-sprint intellectual prior work, earlier sprint campaign imports and code authored in the final revision. Import time is not first creation time. We do not infer independent timestamps from filenames, modification times or a protocol hash.
+This file records the origin of the main analysis components in the repository. It separates pre-existing research context, reused analysis modules, and CopyCAT-specific implementation work.
 
-## Pre-sprint material
+## Prior research context
 
-The author's GRIT / IEEE ICA 2026 manuscript, inspected source dated 31 October 2026, already presents refinement invariance, exact shared-partition certificates, witnesses/abstention, additive/mergeable closures and a tractability boundary for a different partition problem. These are preexisting motivation and are explicitly disclosed in the report. No GRIT repository/source file was imported directly during this final revision.
+The author's earlier GRIT / IEEE ICA 2026 work already developed refinement-invariance motivation, shared-partition certificates, additive/mergeable closures, and a tractability boundary for a different partition problem. Those ideas predate CopyCAT and are treated as prior work rather than new contributions here.
 
-Public FActScore, FaStFact, MedQA and MMLU-ProX data/model outputs are third-party prior work. The sprint did not generate those releases. The original official report template is retained as `report/official_template_original.docx`; `report/template.docx` is the earlier populated derivative used by the builder. The template was downloaded directly from the official linked Google document and its footnote/theme were compared with the derivative.
+FActScore, FaStFact, MedQA, and MMLU-ProX data/model outputs are third-party public releases. Their exact sources and hashes are listed in `DATA.md`.
 
-## Imported earlier sprint campaign code
+## Reused secondary-analysis modules
 
-The following files were imported from the supplied earlier sprint reproducibility package, rather than claimed as newly written in this final revision. Its records attribute the analyses to the November 13–16 sprint campaign; their first authorship timestamps are not independently established here. All modules needed for reported results were computationally rerun.
+The following modules originated in earlier iterations of the same research program and were rerun for the final CopyCAT analysis:
 
-`analyze_factscore.py`, `analyze_fastfact_prospective.py`, `audit_fastfact_integrity.py`, `conjunction_identity.py`, `factscore_matched_control.py`, `medqa_crossmetric.py`, `natural_controls.py`, `natural_counts.py`, `refinement.py`, `reproduce_all.py`, `reproduce_factscore.py`, `reproduce_medqa.py`, `robustness_audit.py`, `test_audit.py`, `test_refinement.py`, `verifier_check.py`, `verify_weighted_repair.py`, `weighted_measure.py`.
+`analyze_factscore.py`, `analyze_fastfact_prospective.py`, `conjunction_identity.py`, `factscore_matched_control.py`, `medqa_crossmetric.py`, `natural_controls.py`, `natural_counts.py`, `refinement.py`, `reproduce_medqa.py`, `robustness_audit.py`, `verifier_check.py`, `verify_weighted_repair.py`, and `weighted_measure.py`.
 
-Associated protocols and historical saved outputs were imported and are marked as such. Earlier target-label and second-verifier access prevents describing these checks as unseen-data preregistered confirmation. The FaStFact protocol hash identifies the rule's content, not an external timestamp.
+The factuality and natural-count analyses are exploratory. Reused labels or verifier outputs are not described as unseen-data confirmation.
 
-## Final revision code
+## CopyCAT-specific implementation
 
-Written during this revision on 16 November 2026 before the sprint deadline:
-
-| File | Contribution |
+| File | Role |
 |---|---|
-| `code/mmlu_release.py` | Replaces the broken patch implementation; complete pinned acquisition, exact rational ratio optimization, integrity/alignment checks, full pairwise matrices and attained witnesses |
-| `code/test_mmlu_exact.py` | Independent exhaustive subset/budget verification and ratio/regex regressions |
-| `code/joint_winners.py` | Shared-schedule integer optimization, witness validation, integer blocking certificates, random controls and full budget curves |
-| `code/test_joint_winners.py` | Independent brute-force verification of 680 tiny joint problems and incompatible-pairwise-witness regression |
-| `code/verify_medqa_rational.py` | Exact fractions of released decimal confidence strings, independent endpoint/threshold checks |
-| `code/acquire_sources.py` | Public-source downloader with original archive and per-file hash verification |
-| `code/quick_demo.py`, `code/run_submission.py` | Standard-library headline verification and full ordered reproduction runner |
-| `report/build_final.py`, `report/make_figures_final.py` | Revised official-template report and exact data figures |
+| `code/mmlu_release.py` | pinned acquisition, integrity/alignment checks, exact rational pairwise audit, full pairwise matrices |
+| `code/test_mmlu_exact.py` | exhaustive subset/budget checks and arithmetic regressions |
+| `code/joint_winners.py` | shared-schedule joint unique-winner optimization and certificate validation |
+| `code/test_joint_winners.py` | independent brute-force verification of small joint problems |
+| `code/reproduce_headline.py` | standard-library reproduction of the compact headline certificate |
+| `code/verify_results.py` | consistency checks across the compact derived result files |
+| `code/acquire_sources.py` | public-source acquisition and hash verification |
 
-No unsupported claim of first-ever general reweighting certification, mass conservation, weighted AUROC or election-control complexity is made. The joint-winner restriction and empirical result are explained with their closest known precedents in the report.
+The MMLU implementation uses exact integer/rational comparisons for the certificate calculations. Feasible joint witnesses are recomputed in integer arithmetic, and the headline exclusions are accompanied by blocking-rival integer certificates.
+
+## Development notes
+
+Earlier development versions contained a 583-question denominator, compared numerators across variable denominators, and over-escaped a filename regex. The current implementation uses the complete 588-question aligned archive and includes regression tests for those failure modes.
+
+General reweighting sensitivity, mass conservation, weighted metrics, and election-control complexity are not treated as novel results of this repository.
