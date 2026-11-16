@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "verified_on": "2026-11-16",
+  "checks": {
+    "headline_reproduction": {
+      "status": "PASS",
+      "possible_winners": [
+        "gemini-3.8-flash",
+        "gpt-6.1-sol",
+        "claude-sonnet-5-5"
+      ],
+      "minimum_copies": {
+        "gemini-3.8-flash": 0,
+        "gpt-6.1-sol": 3,
+        "claude-sonnet-5-5": 8
+      },
+      "exact_exclusions": 7
+    },
+    "mmlu_exact": {
+      "status": "PASS",
+      "signed_vectors": 1092,
+      "subset_budget_cases": 7107
+    },
+    "joint_bruteforce": {
+      "status": "PASS",
+      "cases": 680
+    },
+    "quantitative_consistency": {
+      "status": "PASS",
+      "checks": 51
+    }
+  },
+  "note": "These checks use released/derived data and do not require model inference."
+}
