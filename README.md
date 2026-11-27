@@ -4,6 +4,8 @@ Copy-Controlled Attainability Testing (CopyCAT) is a finite-archive audit for be
 
 This repository contains the implementation, derived result files, source-integrity checks, and paper material for **CopyCAT: Exact Winner Certificates When One Fact Counts Twice**.
 
+**Author:** Sushanth Dasari · **[Portfolio case study](https://sushxnthd.github.io/portfolio/work/copycat/)**
+
 ## Overview
 
 The audit keeps model outputs and labels fixed. For aligned evaluation roots, each root may receive at most one additional copy, and the same copied-root schedule is applied to every compared system. Under that contract, CopyCAT computes:
